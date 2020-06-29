@@ -1,0 +1,19 @@
+/* Base css FOR ALL PAGES*/
+html {
+  height: 100%;
+}
+
+
+body {
+  /* background-image: url(bg3.jpg); */
+  /* background-size: cover; */
+  background: #000000;
+  margin: auto;
+  font-family: "Trebuchet MS", monospace;
+}
+
+div{
+  padding:5px;
+}
+
+  
