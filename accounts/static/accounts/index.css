@@ -229,4 +229,9 @@
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
   }
   
-  
+  #reset{
+    color:white;
+    font-size: large;
+    text-align: center;
+    margin-top: 350px;
+  }
