@@ -166,7 +166,7 @@ def redeem_update(request,pk):
         user_redeemedrewards.save()
 
     newredeemedreward = Reward.objects.get(pk=pk)
-    user_redeemedrewards.redeemedrewards.add(newredeemedreward)
+    
 
     user_totalpoints = TotalPoints.objects.get(user=request.user)
     requiredpoints = newredeemedreward.requiredpoints
@@ -176,7 +176,9 @@ def redeem_update(request,pk):
     else:
         user_totalpoints.points = F('points') - requiredpoints
         user_totalpoints.save()
+        user_redeemedrewards.redeemedrewards.add(newredeemedreward)
         messages.success(request, 'Reward {} redeemed successfully'.format(pk))
+        
     return redirect('survey:shoprewards')
 
 
@@ -185,26 +187,30 @@ def redeemedrewards_view(request):
     try:
         context = {
             'displayedpoints': TotalPoints.objects.get_or_create(user=request.user),
-            'allredeemedrewards': RedeemedRewards.objects.get(user=request.user).redeemedrewards.exclude(id__in=UsedRewards.objects.get(user=request.user).usedrewards.values_list('id',flat=True))
+            'allredeemedrewards': RedeemedRewards.objects.get_or_create(user=request.user).redeemedrewards.all()
         }
-    
     except:
         context={
             'displayedpoints': TotalPoints.objects.get_or_create(user=request.user),
             'allredeemedrewards': RedeemedRewards.objects.get(user=request.user).redeemedrewards.all()
         }
+    
 
     return render(request, 'survey/redeemedrewards.html', context)
 
 def used_update(request,pk):
     try:
         user_usedrewards = UsedRewards.objects.get(user=request.user)
+        user_redeemedrewards=RedeemedRewards.objects.get(user=request.user)
+
     except ObjectDoesNotExist:
         user_usedrewards = UsedRewards.objects.create(user=request.user)
+        user_redeemedrewards = RedeemedRewards.objects.get(user=request.user)
         user_usedrewards.save()
 
     newusedreward = Reward.objects.get(pk=pk)
     user_usedrewards.usedrewards.add(newusedreward)
+    user_redeemedrewards.redeemedrewards.remove(newusedreward)
 
     return redirect('survey:redeemedrewards')
 

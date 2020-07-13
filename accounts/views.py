@@ -30,7 +30,10 @@ def profile_view(request):
 
         if user_form.is_valid and profile_form.is_valid:
             user_form.save()
-            profile_form.save()
+            profile = profile_form.save(commit=False)
+            user = user_form.save()
+            user.email=profile.email
+            user.save()
             messages.success(request, 'Your profile is successfully updated!')
             return redirect('profile')
 
@@ -55,6 +58,8 @@ def register(request):
                 print('found it')
                 profile.profile_pic = request.FILES['profile_pic']
             profile.save()
+            user.email=profile.email
+            user.save()
             registered = True
             return redirect('index')
 
