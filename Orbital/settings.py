@@ -27,8 +27,10 @@ SECRET_KEY = '(4173v2)^c1hx!uz!h2y1uot(g^11$cpk#fj2rgdt#$h+rvr$%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['orbital.pythonanywhere.com']
+ALLOWED_HOSTS = ['orbital.pythonanywhere.com','127.0.0.1','localhost']
 
+#Key
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 # Application definition
 
@@ -41,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'widget_tweaks']
+    'widget_tweaks',
+    'social_django'
+    ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -52,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware'
 ]
 
 ROOT_URLCONF = 'Orbital.urls'
@@ -67,6 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -76,6 +83,15 @@ WSGI_APPLICATION = 'Orbital.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+AUTHENTICATION_BACKENDS = (
+
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 DATABASES = {
     'default': {
@@ -103,6 +119,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '817452921891-femb94q9dpu34ted6adicngadm0vguvo.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XcEa5dzMQaO-XdL_W4XT3I4L'
+
+SOCIAL_AUTH_GITHUB_KEY = 'f1369e8112382a4556a3'
+SOCIAL_AUTH_GITHUB_SECRET = '29958e5515a62fd064953e1dba67b28d5ac9a2df'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1917714621698915'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'd7a2bad175d2ad0dba40f56a1009efcb'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -127,6 +156,8 @@ STATIC_ROOT= '/home/orbital/Orbital/static'
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 LOGIN_URL = '/accounts/user_login/'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'survey:dashboard'
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT= 587

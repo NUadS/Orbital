@@ -4,8 +4,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .forms import UploadSurveyForm
-from .models import UploadSurvey,CompletedSurveys, TotalPoints, Reward, RedeemedRewards, UsedRewards
+from .forms import UploadSurveyForm,ReportForm
+from .models import UploadSurvey,CompletedSurveys, TotalPoints, Reward, RedeemedRewards, UsedRewards,Report
 from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -230,3 +230,18 @@ def usedrewards_view(request):
         }
     return render(request, 'survey/usedrewards.html', context)
 
+
+### VIEW FOR REPORT
+@login_required
+def report_view(request):
+    if request.method == 'POST':
+        report_form = ReportForm(request.POST)
+        if report_form.is_valid():
+            rf=report_form.save(commit=False)
+            rf.user=request.user
+            rf.save()
+            messages.success(request, 'Your report is successfully made!')
+            return redirect('survey:dashboard')
+    else:
+        report_form = ReportForm(instance=request.user)
+    return render(request, 'survey/report.html', {'form':report_form})

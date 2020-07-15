@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import GenderFilter,SingaporeanFilter, FacultyFilter, YearFilter, ResidentialFilter,UploadSurvey,CompletedSurveys, TotalPoints, Reward, RedeemedRewards, UsedRewards
+from .models import GenderFilter,SingaporeanFilter, FacultyFilter, YearFilter, ResidentialFilter,UploadSurvey,CompletedSurveys, TotalPoints, Reward, RedeemedRewards, UsedRewards, Report
 # Register your models here.
 admin.site.register(GenderFilter)
 admin.site.register(SingaporeanFilter)
@@ -12,4 +12,5 @@ admin.site.register(TotalPoints)
 admin.site.register(Reward)
 admin.site.register(RedeemedRewards)
 admin.site.register(UsedRewards)
+admin.site.register(Report)
 

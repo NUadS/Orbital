@@ -64,7 +64,8 @@ def register(request):
             return redirect('index')
 
         else:
-            print(user_form.errors,profile_form.errors)
+            messages.error(request,user_form.errors)
+            messages.error(request,profile_form.errors)
     else:
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
