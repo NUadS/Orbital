@@ -28,15 +28,18 @@ def profile_view(request):
         user_form=UserUpdateForm(request.POST, instance=request.user)
         profile_form=ProfileUpdateForm(request.POST,request.FILES, instance=request.user.userprofileinfo)
 
-        if user_form.is_valid and profile_form.is_valid:
+        if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile = profile_form.save(commit=False)
             user = user_form.save()
             user.email=profile.email
             user.save()
+            profile.save()
             messages.success(request, 'Your profile is successfully updated!')
             return redirect('profile')
-
+        else:
+            messages.error(request,user_form.errors)
+            messages.error(request,profile_form.errors)
     else:
         user_form=UserUpdateForm(instance=request.user)
         profile_form=ProfileUpdateForm(instance=request.user.userprofileinfo)
@@ -94,3 +97,6 @@ def user_login(request):
             return HttpResponse("Invalid login details given")
     else:
         return render(request, 'accounts/login.html', {})
+
+
+

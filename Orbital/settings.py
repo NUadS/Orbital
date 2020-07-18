@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'social_django'
+    
     ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -89,7 +90,6 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
-
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -119,16 +119,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '817452921891-femb94q9dpu34ted6adicngadm0vguvo.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XcEa5dzMQaO-XdL_W4XT3I4L'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '882839793720-2od3vovq2s6ma0dejopmvkln57nmu3ms.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '4JcJARSKN6WwORXYSbHG8zkY'
 
-SOCIAL_AUTH_GITHUB_KEY = 'f1369e8112382a4556a3'
-SOCIAL_AUTH_GITHUB_SECRET = '29958e5515a62fd064953e1dba67b28d5ac9a2df'
+SOCIAL_AUTH_GITHUB_KEY = '6f94af85589f0b890ee9'
+SOCIAL_AUTH_GITHUB_SECRET = 'b09d65782af7d5c138d7d044937edd05770dbc2a'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '1917714621698915'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'd7a2bad175d2ad0dba40f56a1009efcb'
+SOCIAL_AUTH_FACEBOOK_KEY = '957175401393996'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f1bc00d9f60f1461ee75116b16ff3c7f'
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 # ACCOUNT_DEFAULT_HTTP_PROTOCOL='https'
 
