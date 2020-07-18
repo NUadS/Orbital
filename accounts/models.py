@@ -11,13 +11,13 @@ class UserProfileInfo(models.Model):
     name = models.CharField('Full Name',max_length=200)
     matriculationNumber = models.CharField('Matric Number',
     max_length=10,help_text='AXXXXXXXB')
-    age = models.IntegerField()
-    dob = models.DateField('Date of Birth', help_text='yyyy-mm-dd')
+    age = models.IntegerField(null=True)
+    dob = models.DateField('Date of Birth', help_text='yyyy-mm-dd',null=True)
     genderChoices = [('Female','F'),('Male','M')]
     gender = models.CharField(max_length=10, choices=genderChoices)
     email = models.EmailField(max_length=200, blank=False)
     portfolio_site = models.URLField(blank=True)
-    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     countryChoices = [
     ('AFGHANISTAN', 'AFGHANISTAN'),
@@ -279,7 +279,7 @@ class UserProfileInfo(models.Model):
     faculty = models.CharField(max_length=50,
     choices=facultyChoices,default='Arts and Social Sciences')
 
-    degree = models.CharField(max_length=50)
+    degree = models.CharField(max_length=50,null=True)
 
     YEAR_IN_SCHOOL_CHOICES = [
         ('FRESHMAN', 'Freshman'),

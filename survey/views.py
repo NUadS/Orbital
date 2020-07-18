@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .forms import UploadSurveyForm,ReportForm
 from .models import UploadSurvey,CompletedSurveys, TotalPoints, Reward, RedeemedRewards, UsedRewards,Report
+from accounts.models import UserProfileInfo
 from django.contrib import messages
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -18,7 +19,12 @@ from django.db.models import F
 
 @login_required
 def dashboard_view(request):
-    profile=request.user.userprofileinfo
+    try:
+        profile=request.user.userprofileinfo
+    except:
+        profile=UserProfileInfo.objects.create(user=request.user)
+        messages.success(request,'Please update your profile')
+        
     try:
         target_filter= UploadSurvey.objects.filter(
                 gender_filter__gender_filter=profile.gender, 
