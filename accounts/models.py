@@ -17,7 +17,7 @@ class UserProfileInfo(models.Model):
     gender = models.CharField(max_length=10, choices=genderChoices)
     email = models.EmailField(max_length=200, blank=False)
     portfolio_site = models.URLField(blank=True)
-    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    profile_pic = models.ImageField(default='static/default.jpg', upload_to='profile_pics')
 
     countryChoices = [
     ('AFGHANISTAN', 'AFGHANISTAN'),
