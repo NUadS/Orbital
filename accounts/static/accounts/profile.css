@@ -15,8 +15,15 @@
 
 .profile_header{
   color:white;
-  margin-left: 640px;
+  text-align:center;
   font-family:sans-serif;
+}
+
+#profile_header{
+  color:white;
+  text-align:center;
+  font-family:sans-serif;
+
 }
 
 .uh-image {

@@ -47,6 +47,7 @@ def dashboard_view(request):
 
     survey_filter= SurveyFilter(request.GET, queryset=target_filter)
     context={
+        'displayedpoints': TotalPoints.objects.get_or_create(user=request.user),
         'dashboardfilter': survey_filter
     }
     return render(request, 'survey/dashboard.html',context)

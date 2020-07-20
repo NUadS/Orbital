@@ -6,6 +6,8 @@
 
 }
 
+
+
 .box h2 {
     margin: 0 0 30px;
     padding: 0;
@@ -213,6 +215,7 @@
 #login-box{
     width: 400px;
 }
+
 
 /* Login button of login form */
 #login-submit-button{

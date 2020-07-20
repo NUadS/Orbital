@@ -2,8 +2,15 @@
 .points{
   margin-top:-90px;
   margin-left: 1200px;
-  color:rgb(68, 67, 67);
+  color:black;
   
+}
+
+.dash-points{
+  margin-top: -120px;
+  margin-left: 1200px;
+  font-size: small;
+  color:rgb(68, 67, 67);
 }
 
 .reward{
@@ -25,6 +32,11 @@
 
 .totalptshead{
   margin-left:565px;
+}
+
+.dashpoints{
+  margin-top:100px;
+  margin-left: 100px;
 }
 .indiv{
   font-size: small;
@@ -187,6 +199,7 @@ h2{
   margin-left: -100px;
   margin-bottom: 100px;
 }
+
 .box a:hover {
     background: #03e9f4;
     color: #fff;
