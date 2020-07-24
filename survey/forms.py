@@ -13,11 +13,11 @@ class UploadSurveyForm(forms.ModelForm):
             'surveylink': forms.TextInput(attrs={'type':'text', 'id':'login-input-user', 'class':'login__input'}),
             'surveydescription':forms.Textarea(attrs={'type':'text', 'id':'login-input-user', 'class':'login__input'}),
             'surveycategory':forms.Select(attrs={'id':'login-input-user', 'class':'login__input','style': 'width:430px'}),
-            'gender_filter': forms.CheckboxSelectMultiple(),
-            'singaporean_filter': forms.CheckboxSelectMultiple(),
-            'faculty_filter': forms.CheckboxSelectMultiple(),
-            'year_filter': forms.CheckboxSelectMultiple(),
-            'residential_filter': forms.CheckboxSelectMultiple()
+            'gender_filter': forms.CheckboxSelectMultiple(attrs={'checked' : 'checked'}),
+            'singaporean_filter': forms.CheckboxSelectMultiple(attrs={'checked' : 'checked'}),
+            'faculty_filter': forms.CheckboxSelectMultiple(attrs={'checked' : 'checked'}),
+            'year_filter': forms.CheckboxSelectMultiple(attrs={'checked' : 'checked'}),
+            'residential_filter': forms.CheckboxSelectMultiple(attrs={'checked' : 'checked'})
 
             
         }
