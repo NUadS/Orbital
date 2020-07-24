@@ -28,7 +28,6 @@
 {% block body_block %}
 {% load widget_tweaks %}
 
-<img src="{% static 'survey/Screenshot 2020-07-19 at 4.40.00 PM.png' %}" style="margin-top:50px;margin-left:40px;border-radius:10px;width:95%; height:500px">
 <div class="reward">
   <div class="dashpoints">
     Total Available Points
@@ -52,7 +51,7 @@
   <div id="header">
     <div id="logo"></div>
   </div>
-  
+
   <form method="get">
     <div class="filter-form">
     <span class="glyphicon glyphicon-filter filter" aria-hidden="true" style="color:white"> Filter: </span>
@@ -76,27 +75,27 @@
   <div id="slides-cont">
     <div class="button" id="next"></div>
     <div class="button" id="prev"></div>
-    
+
     <div id="slides">
       {% for survey in dashboardfilter.qs %}
       <div class="slide">
         <div class="number">{{survey.uploadDate}}</div>
         <div class="body">
-          
+
           <div class="location"> <span class="glyphicon glyphicon-user" aria-hidden="true" style="color:white"> </span> {{survey.user}} &nbsp <span class="glyphicon glyphicon-tags" aria-hidden="true" style="color:white"> </span> {{survey.surveycategory}}</div>
           <div class="headline">{{survey.surveytitle}}</div>
           <a href="{% url 'survey:completedsurveys_update' pk=survey.pk %}" target="_self" onclick="window.open('{{survey.surveylink}}');">
             <div class="link">DO SURVEY</div>
           </a>
-          <div class="details"> 
+          <div class="details">
             {{survey.surveydescription}}
           </div>
-            
+
         </div>
       </div>
       {% endfor %}
     </div>
-    
+
     <div id="next-catch"></div>
     <div id="prev-catch"></div>
   </div>
