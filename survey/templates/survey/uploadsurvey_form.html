@@ -36,20 +36,20 @@
   <form method="POST" id="uploadsurvey_form">
     {% csrf_token %}
       <div class=form-row>
-        <label for="surveytitle" class="login__label"> Survey Title </label>
+        <label for="surveytitle" class="login__label"> Survey Title * </label>
         {{form.surveytitle}}
       </div>
 
       <div class=form-row>
 
-        <label for="surveylink" class="login__label"> Survey Link </label>
+        <label for="surveylink" class="login__label"> Survey Link * </label>
         {{form.surveylink}}
 
       </div>
 
       <div class=form-row>
 
-        <label for="surveydescription" class="login__label"> Survey Description </label>
+        <label for="surveydescription" class="login__label"> Survey Description * </label>
         {{form.surveydescription}}
 
       </div>
@@ -57,7 +57,7 @@
 
       <div class=form-row>
 
-        <label for="surveycategory" class="login__label"> Survey Category </label>
+        <label for="surveycategory" class="login__label"> Survey Category * </label>
         {{form.surveycategory}}
       </div>
 
