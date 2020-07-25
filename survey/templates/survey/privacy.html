@@ -1,0 +1,51 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/profile.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'survey/uploadsurvey.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'survey/privacy.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kulim Park">
+{% endblock %}
+
+
+{% block body_block %}
+<h1>
+Privacy Policy
+</h1> 
+<div>
+<h4>
+    1. What information NUadS collects and why
+</h4>
+NUadS collects basic information from visitors to our website. We only require the minimum amount of personal information necessary from you, so as to ensure the basic functionality of NUadS.
+When you sign up or use NUadS, you give us certain information voluntarily, including your name, email address, phone number, profile photo etc. 
+<br>
+<h4> 
+    2. Third Party Access
+</h4>
+If you link your Facebook or Google account or accounts from other third party services to NUadS, we also get information from those accounts (such as your username, email address). 
+The information we get from those services depends on your settings and thier privacy policies, so please ensure that you check what they are.   
+<br>
+<h4>
+    3. How we share the information we collect 
+</h4>
+We share information to provide the service to you, specifically, we require your personal information to filter out relevant surveys that match your profile information. 
+We do not host advertising on NUadS and we do not sell your personal information. 
+<br>
+<h4>
+    4. How you can access and control the information we collect 
+</h4>
+We provide ways for your to access, alter or delete your profile information. This allows you to access and control the information we collect. 
+
+
+<div class="box submit-button">
+    <a href="{% url 'survey:dashboard' %}" id="update-button">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        I AGREE
+    </a>
+</div>
+
+</div> 
+{% endblock %}

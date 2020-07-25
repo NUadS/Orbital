@@ -26,6 +26,7 @@ urlpatterns=[
     path('redeemedrewards/', survey_views.redeemedrewards_view , name='redeemedrewards'),
     path('redeemedrewards/<int:pk>', survey_views.used_update, name='used_update'),
     path('usedrewards/', survey_views.usedrewards_view, name='usedrewards'),
-    path('report/', survey_views.report_view, name='report')
+    path('report/', survey_views.report_view, name='report'),
+    path('privacy/', survey_views.privacy_view, name='privacy')
 
 ]
