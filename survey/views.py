@@ -252,3 +252,6 @@ def report_view(request):
     else:
         report_form = ReportForm(instance=request.user)
     return render(request, 'survey/report.html', {'form':report_form})
+
+def privacy_view(request):
+    return render(request,'survey/privacy.html')

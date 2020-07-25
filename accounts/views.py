@@ -64,7 +64,7 @@ def register(request):
             user.email=profile.email
             user.save()
             registered = True
-            return redirect('index')
+            return redirect('survey:privacy')
 
         else:
             messages.error(request,user_form.errors)
